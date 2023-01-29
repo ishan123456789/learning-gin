@@ -19,9 +19,7 @@ func (ctrl GymController) CreateGym(c *gin.Context) {
 			fmt.Println("Recovered in someFunction", r)
 		}
 	}()
-	DB, _ := utils.GetDB()
-	collection := DB.Collection("gyms")
-	inserted, err := collection.InsertOne(context.TODO(), bson.M{"hello": "world"})
+	inserted, err := utils.GymCollection().InsertOne(context.TODO(), bson.M{"hello": "world"})
 	if err != nil {
 		log.Fatal(err)
 	}

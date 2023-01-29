@@ -67,3 +67,12 @@ func GetDB() (*mongo.Database, error) {
 	DataBase = localClient.Database(mongoDB)
 	return DataBase, nil
 }
+
+func GymCollection() *mongo.Collection {
+	DB, err := GetDB()
+	collection := DB.Collection("gyms")
+	if err != nil {
+		log.Fatal(err)
+	}
+	return collection
+}
